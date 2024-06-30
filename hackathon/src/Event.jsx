@@ -10,7 +10,7 @@ const Event = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const token = localStorage.getItem('token'); // Assuming you store the token in localStorage after login
+        const token = localStorage.getItem('token'); 
         const config = {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -30,7 +30,7 @@ const Event = () => {
 
   const handleVolunteer = async (eventId) => {
     try {
-      const token = localStorage.getItem('token'); // Assuming you store the token in localStorage after login
+      const token = localStorage.getItem('token'); 
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -38,7 +38,7 @@ const Event = () => {
       };
       await axios.post(`http://localhost:5000/events/${eventId}/volunteer`, {}, config);
       toast.success('Volunteered successfully');
-      // Update events after volunteering (if needed)
+      
       const updatedEvents = events.map(event =>
         event._id === eventId ? { ...event, volunteerNeeded: false } : event
       );
@@ -53,7 +53,7 @@ const Event = () => {
     return <div className="container mx-auto p-4">Loading events...</div>;
   }
 
-  // Separate upcoming and past events based on current date
+  
   const currentDate = new Date();
   const upcomingEvents = events.filter(event => new Date(event.dateOfEvent) >= currentDate);
   const pastEvents = events.filter(event => new Date(event.dateOfEvent) < currentDate);
