@@ -24,7 +24,7 @@ const Login = () => {
     try {
       const res = await axios.post('http://localhost:5000/login', { email: formData.email, password: formData.password });
       localStorage.setItem('token', res.data.token);
-      navigate('/profile'); // Redirect to profile page after successful login
+      navigate('/profile'); 
     } catch (error) {
       setErrorMessage('Invalid credentials');
     }

@@ -131,8 +131,8 @@ app.post('/events', authenticate, async (req, res) => {
 
   try {
     await newEvent.save();
-    console.log('Event created successfully:', newEvent); // Add this log
-    res.status(201).json(newEvent); // Return the created event
+    console.log('Event created successfully:', newEvent); 
+    res.status(201).json(newEvent); 
   } catch (error) {
     console.error('Error creating event:', error.message);
     res.status(400).send('Error creating event');
@@ -142,7 +142,7 @@ app.post('/events', authenticate, async (req, res) => {
 // Get all events endpoint excluding events created by the logged-in user
 app.get('/events', authenticate, async (req, res) => {
   try {
-    const events = await Event.find({ createdBy: { $ne: req.user.id } }) // Exclude events created by the logged-in user
+    const events = await Event.find({ createdBy: { $ne: req.user.id } }) 
       .populate('createdBy', 'name email')
       .populate('volunteers', 'name email');
 
@@ -208,7 +208,6 @@ app.put('/profile', authenticate, async (req, res) => {
   const { name, email, contact, community, description } = req.body;
 
   try {
-    // Find the user by ID and update their profile
     const updatedUser = await User.findByIdAndUpdate(
       req.user.id,
       { name, email, contact, community, description },

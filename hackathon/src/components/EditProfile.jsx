@@ -54,7 +54,7 @@ const EditProfile = () => {
       navigate('/profile');
     } catch (err) {
       setError('Failed to update profile. Please try again.');
-      console.error(err); // Log detailed error for debugging
+      console.error(err); 
     }
   };
 
@@ -73,7 +73,7 @@ const EditProfile = () => {
               id="name"
               value={user.name}
               onChange={handleChange}
-              className="w-full p-2 border border-green-500 rounded"
+              className="w-full p-2 border border-green-500 rounded bg-white"
               required
             />
           </div>
@@ -84,7 +84,7 @@ const EditProfile = () => {
               id="email"
               value={user.email}
               onChange={handleChange}
-              className="w-full p-2 border border-green-500 rounded"
+              className="w-full p-2 border border-green-500 rounded bg-white"
               required
             />
           </div>
@@ -95,7 +95,7 @@ const EditProfile = () => {
               id="contact"
               value={user.contact}
               onChange={handleChange}
-              className="w-full p-2 border border-green-500 rounded"
+              className="w-full p-2 border border-green-500 rounded bg-white"
               required
             />
           </div>
@@ -106,7 +106,7 @@ const EditProfile = () => {
               id="community"
               value={user.community}
               onChange={handleChange}
-              className="w-full p-2 border border-green-500 rounded"
+              className="w-full p-2 border border-green-500 rounded bg-white"
               required
             />
           </div>
@@ -117,7 +117,7 @@ const EditProfile = () => {
               id="description"
               value={user.description}
               onChange={handleChange}
-              className="w-full p-2 border border-green-500 rounded"
+              className="w-full p-2 border border-green-500 rounded bg-white"
               required
             />
           </div>

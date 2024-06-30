@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import useAuth from './useAuth'; // adjust the path as necessary
+import useAuth from './useAuth'; 
 
 const Profile = () => {
   useAuth();

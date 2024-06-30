@@ -10,7 +10,6 @@ const Connect = () => {
     const fetchPeople = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/users');
-        // Sort people by name alphabetically
         const sortedPeople = response.data.sort((a, b) => a.name.localeCompare(b.name));
         setPeople(sortedPeople);
         setLoading(false);

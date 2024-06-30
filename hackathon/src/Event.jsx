@@ -36,7 +36,7 @@ const Event = () => {
           Authorization: `Bearer ${token}`,
         },
       };
-      await axios.post(`http://localhost:5000/events/${eventId}/volunteer, {}, config`);
+      await axios.post(`http://localhost:5000/events/${eventId}/volunteer`, {}, config);
       toast.success('Volunteered successfully');
       // Update events after volunteering (if needed)
       const updatedEvents = events.map(event =>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import useAuth from './useAuth'; // adjust the path as necessary
+import useAuth from './useAuth'; 
 
 const Community = () => {
   const { user, loading: authLoading } = useAuth();
@@ -9,7 +9,7 @@ const Community = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let source = axios.CancelToken.source(); // Create a cancel token source
+    let source = axios.CancelToken.source(); 
 
     if (!authLoading && user) {
       const fetchCommunityMembers = async () => {
@@ -19,7 +19,7 @@ const Community = () => {
             headers: {
               Authorization: `Bearer ${token}`
             },
-            cancelToken: source.token // Set the cancel token for this request
+            cancelToken: source.token 
           });
           setCommunityMembers(response.data);
           setLoading(false);
@@ -34,12 +34,10 @@ const Community = () => {
       fetchCommunityMembers();
 
       return () => {
-        // Cancel the request if the component unmounts
         source.cancel('Request canceled by cleanup');
       };
     }
 
-    // Cleanup function for unmounting
     return () => {
       source.cancel('Request canceled by cleanup');
     };

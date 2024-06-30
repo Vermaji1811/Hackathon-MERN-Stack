@@ -7,12 +7,12 @@ const CreateEvent = () => {
     typeOfEvent: '',
     placeOfEvent: '',
     nameOfEvent: '',
-    dateOfEvent: '', // Added dateOfEvent state
+    dateOfEvent: '', 
     volunteerNeeded: null,
   };
 
   const [formData, setFormData] = useState(initialFormData);
-  const [popup, setPopup] = useState({ show: false, message: '' }); // State variable for popup
+  const [popup, setPopup] = useState({ show: false, message: '' }); 
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -25,27 +25,27 @@ const CreateEvent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem('token'); // Assuming you store the token in localStorage after login
+      const token = localStorage.getItem('token'); 
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       };
 
-      // Convert volunteerNeeded to Boolean
       const eventData = {
         ...formData,
         volunteerNeeded: formData.volunteerNeeded === 'Yes',
       };
 
       await axios.post('http://localhost:5000/events', eventData, config);
-      setPopup({ show: true, message: 'Event created successfully!' }); // Show success popup
-      setTimeout(() => setPopup({ show: false, message: '' }), 3000); // Hide popup after 3 seconds
+      setPopup({ show: true, message: 'Event created successfully!' }); 
+      setTimeout(() => setPopup({ show: false, message: '' }), 3000); 
       setFormData(initialFormData);
-    } catch (error) {
+    }
+  catch (error) {
       console.error('Error creating event:', error);
-      setPopup({ show: true, message: 'Error creating event. Please try again.' }); // Show error popup
-      setTimeout(() => setPopup({ show: false, message: '' }), 3000); // Hide popup after 3 seconds
+      setPopup({ show: true, message: 'Error creating event. Please try again.' }); 
+      setTimeout(() => setPopup({ show: false, message: '' }), 3000); 
     }
   };
 
